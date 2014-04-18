@@ -1,7 +1,7 @@
 SERVER
 -
 
-The example we are going to follow is very simple. We have a MQTT server, one publisher and one subscriber. The publisher will send a message to the server with a certain topic and the subscriber, that will subscribed to that same topic will receive it. We wiill include security in two steps, first to the connections with SSL certificates and finally with user/password authentication.
+The example we are going to follow is very simple. We have a MQTT server, one publisher and one subscriber. The publisher will send a message to the server with a certain topic and the subscriber, that will subscribed to that same topic will receive it. We will include security in two steps, first to the connections with SSL certificates and finally with user/password authentication.
 
 But first things first. Let’s start with the MQTT server. We will use Mosquitto, which is an open source implementation of an MQTT message broker. You can download it here for windows.
 
@@ -56,7 +56,7 @@ Insert password and confirm it. Same thing for publisher, only that in this case
 
     mosquitto_passwd passfile publisher
 
-There it is, not everything is prepared. We can run mosquitto now with the following command so that it gets configured with the configuration file we just created.
+There it is, now everything is prepared. We can run mosquitto with the following command so that it gets configured with the configuration file we just created.
 
     mosquitto –c mosquitto.conf
 
@@ -65,7 +65,7 @@ Notice that it will ask for the password of the server’s key.
 CLIENTS: PUBLISHER AND SUBSCRIBER
 -
 
-Let’s move forward with the clients, the publisher and subscriber. Create a new Maven project in Eclipse and add the next dependendencies and repositories in the pom.xml. You can see there that we will use the eclipse paho library for the clients and the bouncycastle for SSL certificates, but that will come later.
+Let’s move forward with the clients, the publisher and subscriber. Create a new Maven project in Eclipse and add the next dependendencies and repositories in the pom.xml. You can see there that we will use the eclipse paho library for the clients and the bouncycastle for SSL certificates.
 
 pom.xml
 
@@ -102,7 +102,7 @@ pom.xml
     	</dependencies>
     </project>
 
-We will have a base Client class here, and a SSL helper. I have created these so that the configuration gets easier, but you are free to use the library client library directly. Finally two more simple classes. The first one for the subscriber that connects to the server and wait for messages published into its topic list and the Publisher that sends a message to a topic, that of course happens to be the same to the one from which the Subscriber is listening to.
+We will have a base Client, and a SSL helper. I have created these so that the configuration gets easier, but you are free to use the library's client directly. Finally two more objects. The first one for a subscriber that connects to the server and waits for messages published into its topic list. And the Publisher that sends a message to a topic, that of course happens to be the same to the one from which the Subscriber is receiving from.
 
 In order to run the publisher and subscriber properly we will need to fill the publisher and subscriber properties file with the information for the certificates we generated before.
 
@@ -120,5 +120,5 @@ subscriber.properties
     ssl.client.key.path={path_to_file}/m2mqtt_sub.key
     ssl.client.key.passphrase={password}
     
-Now you just need to run both the subscriber and publisher. And don't forget to sever!
+Now you just need to run both the subscriber and publisher. And don't forget to have the sever running!
 
