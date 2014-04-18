@@ -9,7 +9,7 @@ But first things first. Let’s start with the MQTT server. We will use Mosquitto,
 
 Notice that once you execute the installation, Mosquitto will run as a service so you can go to Services in Windows and tell it to run automatically. Now you can go to the installation directory (i.e. C:\Program Files (x86)\mosquitto), open the command line and execute “mosquitto.exe”. Minimize the window.
 
-The message broker is running now. But we need to secure the connections and also provide a list of users that will be allowed to use the broker. So lets move forward with the certification generation for the server. We will use OpenSSL for this (Yes, I know what just happened but they have fixed, haven’t they?) 
+The message broker is running now. But we need to secure the connections and also provide a list of users that will be allowed to use the broker. So lets move forward with the certification generation for the server. We will use OpenSSL for this.
 
 Download the version openssl-1.0.1g or later.
 
