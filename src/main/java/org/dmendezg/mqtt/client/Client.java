@@ -41,7 +41,7 @@ public class Client implements MqttCallback {
 			conOpt = new MqttConnectOptions();
 			conOpt.setCleanSession(clean);
 
-			if (ssl = true) {
+			if (ssl) {
 				conOpt.setSocketFactory(socketFactory);
 			}
 

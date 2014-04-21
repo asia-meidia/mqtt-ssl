@@ -8,30 +8,32 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class Publisher {
-	
+
 	public static void main(String[] args) {
 
 		int qos = 2;
 		String broker = "localhost";
-		int port = 8883;
+		int port = 1883;
 		String clientId = "myPublisher";
 		String pubisherTopic = "topic/foo";
 		boolean cleanSession = true;
 		boolean ssl = true;
-		String password = "publisher"; // The password you set when you added the user to the passwords file.
+		String password = "publisher"; // The password you set when you added the user
+								// to the passwords file.
 		String userName = "publisher";
 		String protocol = "ssl://";
-		String payload = "Hello World";
+		String payload = "23.0";
 		SocketFactory socketFactory = null;
 
 		String url = protocol + broker + ":" + port;
 
 		try {
-			
+
 			if (ssl) {
-				socketFactory = SSLSocketFactoryGenerator.getSocketFactory("publisher.properties");
-			}		
-			
+				socketFactory = SSLSocketFactoryGenerator
+						.getSocketFactory("publisher.properties");
+			}
+
 			Client client = new Client(url, clientId, cleanSession, userName,
 					password, ssl, socketFactory);
 

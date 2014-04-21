@@ -14,13 +14,13 @@ public class Subscriber {
 
 		int qos = 2;
 		String broker = "localhost";
-		int port = 8883;
+		int port = 1883;
 		String clientId = "mySubscriber";
 		String subscriberTopic = "topic/foo";
 		boolean cleanSession = true;
 		boolean ssl = true;
-		String password = "subscriber"; // The password you set when you added the user to the passwords file.
-		String userName = "subscriber";
+		String password = null; // The password you set when you added the user to the passwords file.
+		String userName = null;
 		String protocol = "ssl://";
 		SocketFactory socketFactory = null;
 

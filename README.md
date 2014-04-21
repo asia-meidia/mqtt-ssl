@@ -39,14 +39,11 @@ Now that we have a certificate for the server, let’s configure it, so that it ru
 
 mosquitto.conf
 
-    bind_address localhost
-    port 8883
-    password_file passfile
-    cafile {PATH_TO_FILE}\m2mqtt_ca.crt
-    certfile {PATH_TO_FILE}\m2mqtt_srv.crt
-    keyfile {PATH_TO_FILE}\m2mqtt_srv.key
-    tls_version tlsv1
-    require_certificate true
+	password_file {PATH_TO_FILE}/pwfile
+    cafile {PATH_TO_FILE}/m2mqtt_ca.crt
+    certfile {PATH_TO_FILE}/m2mqtt_srv.crt
+    keyfile {PATH_TO_FILE}/m2mqtt_srv.key
+	allow_anonymous false
 
 You can see also that we will manage a password_file. The content of it is generated as follows. Run a command windows on Mosquitto’s installation folder and execute.
 
@@ -121,4 +118,5 @@ subscriber.properties
     ssl.client.key.passphrase={password}
     
 Now you just need to run both the subscriber and publisher. And don't forget to have the sever running!
+
 
